@@ -9,13 +9,13 @@ import retrofit2.http.GET
 
 
 interface PostService {
-    @GET("post")
+    @GET("/posts")
     suspend fun getPosts(): List<Post>
 
 }
 
 object PostApi {
-    private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+    private const val BASE_URL = "https://jsonplaceholder.typicode.com"
 
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())

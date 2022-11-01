@@ -1,5 +1,6 @@
 package io.github.jerrymatera.hnghelloworld.post
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,9 +19,9 @@ class PostsViewModel : ViewModel() {
 
     private fun getPosts() {
         viewModelScope.launch {
-            val response = PostApi.retrofitService.getPosts()
-            _posts.value = response
-            println(response)
+            val response = PostApi.retrofitService.getPosts().body()
+            _posts.value = response!!
+            Log.d("posts: ", response.toString())
         }
     }
 }
